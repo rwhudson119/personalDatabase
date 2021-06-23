@@ -28,24 +28,21 @@ const client = new Client({
     database: "postgres"
 })
 
-client.connect();
-client.query('Select * from friends', (err, res) => {
-    if(!err){
-        console.log(res.rows);
-    }
-    else{
-        console.log(err.message);
-    }
-    client.end;
-})
-
 app.get('/', (req, res) => {
     return res.redirect('/customer');
 });
 
 app.get('/customer', (req, res) => {
-    return res.render("index", {"data": client})
-    //res.write('<h1>Hi World</h1>')
-
-
+    client.connect();
+    client.query('Select * from friends', (err, data) => {
+        if(!err){
+            console.log(data.rows);
+            return res.render("index", {"data": data.rows})
+        }
+        else{
+            console.log(err.message);
+            res.write('<h1>Hi World</h1>')
+        }
+        client.end;
+    })
 })

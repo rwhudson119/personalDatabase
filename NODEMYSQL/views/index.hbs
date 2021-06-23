@@ -2,4 +2,32 @@
     <h1>
         Welcome to the <b>DATA DOME</b>
     </h1>
+    {{#each data}}
+    <p>{{this.name}}</p>
+    {{/each}}
+
+    
+    
+    <script>
+        /*var x = document.getElementById("demo");
+
+        function getData(){
+
+            data.connect();
+            data.query('Select * from friends', (err, res) => {
+                if(!err){
+                    //x.innerHTML = "hello this is a bootyboi"
+                    //res.rows;
+                    console.log(res.rows);
+                }
+                else{
+                    //x.innerHTML = x.innerHTML = "hello this is a bananza"
+                    //err.message
+                    console.log(err.message);
+                }
+                data.end;
+            })
+        }*/
+
+    </script>
 </center>
